@@ -1,0 +1,46 @@
+<TABLE border="1">
+  <TR>
+     <TH>text</TH>
+     <TH>number</TH>
+  </TR>
+  <TR>
+     <TD>124</TD>
+     <TD>124</TD>
+  </TR>
+  <TR>
+     <TD>1 2 4</TD>
+     <TD>NaN</TD>
+  </TR>
+  <TR>
+     <TD>-16</TD>
+     <TD>-16</TD>
+  </TR>
+  <TR>
+     <TD>- 16</TD>
+     <TD>NaN</TD>
+  </TR>
+  <TR>
+     <TD>125.258</TD>
+     <TD>125.258</TD>
+  </TR>
+  <TR>
+     <TD>125.</TD>
+     <TD>125</TD>
+  </TR>
+  <TR>
+     <TD>ASDF</TD>
+     <TD>NaN</TD>
+  </TR>
+  <TR>
+     <TD>A123</TD>
+     <TD>NaN</TD>
+  </TR>
+  <TR>
+     <TD>true</TD>
+     <TD>NaN</TD>
+  </TR>
+  <TR>
+     <TD>false()</TD>
+     <TD>NaN</TD>
+  </TR>
+</TABLE>

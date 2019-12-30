@@ -1,0 +1,43 @@
+% 1st variant: w/o templates
+
+chooseLanguage('cs','Czech').
+chooseLanguage('en','English').
+
+t(X,Res):-
+	transform(X^text,Text),
+	transform(Text@lang,La),
+	transform(Text#1,TText),
+	chooseLanguage(La,SLanguage),
+	SRes is cat(SLanguage,': ',TText),
+	Res=element('P',[],[text(SRes)]).
+
+t(X,Res):-
+	transform(X^text,Text),
+	not(transform(Text@lang,La)),
+	transform(Text#1,TText),
+	SRes is cat('German: ',TText),
+	Res=element('P',[],[text(SRes)]).
+	
+ABC is 1,
+parse2(x46in,X),
+findall(P,t(X,P),Ps),
+Y=element(top,[],Ps),
+parse2(Z,Y).
+
+% 2nd variant: w/ templates
+...
+template(element(text,['lang="cs"'],[text(Word)]),[element(p,[],[text(SWord)])]):-
+	!,
+	SWord is cat('Czech: ',Word).
+template(element(text,['lang="en"'],[text(Word)]),[element(p,[],[text(SWord)])]):-
+	!,
+	SWord is cat('English: ',Word).
+template(element(text,_,[text(Word)]),[element(p,[],[text(SWord)])]):-
+	SWord is cat('German: ',Word).
+...
+
+ABC is 1,
+parse2(x46in,X),
+traverse(X,Res),
+Y=element(top,[],Res),
+parse2(Z,Y).

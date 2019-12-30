@@ -1,0 +1,33 @@
+<top>
+<H3>AAA a1</H3>
+<TABLE border="1">
+  <TR>
+     <TH>full</TH>
+     <TH>abbreviated</TH>
+  </TR>
+  <TR>
+     <TD>child::BBB/attribute::id</TD>
+     <TD>BBB/@id</TD>
+  </TR>
+  <TR>
+     <TD>b1</TD>
+     <TD>b1</TD>
+  </TR>
+</TABLE>
+
+<H3>AAA a2</H3>
+<TABLE border="1">
+  <TR>
+     <TH>full</TH>
+     <TH>abbreviated</TH>
+  </TR>
+  <TR>
+     <TD>child::BBB/attribute::id</TD>
+     <TD>BBB/@id</TD>
+  </TR>
+  <TR>
+     <TD>b3</TD>
+     <TD>b3</TD>
+  </TR>
+</TABLE>
+</top>

@@ -1,0 +1,64 @@
+% 1st variant: w/o templates
+
+%t0::[<entry/>]->[text(..)]
+t0([],[]).
+t0([H|T],Res):-
+	transform(H@name,Name),
+	String is cat(Name,', '),
+	Res1=[text(String)],
+	t0(T,Res2),
+	append(Res1,Res2,Res).
+
+ABC is 1,
+parse2(x26in,X), 
+findall(Entry,transform(X^list/entry,Entry),Entries), 
+t0(Entries,Res),
+Y=element(top,[],Res), 
+parse2(Z,Y).
+	
+% 2nd variant: w/ templates - shortened
+...
+%t0::[<entry/>]->[text(..)]
+t0([],[]).
+t0([H|T],Res):-
+	transform(H@name,Name),
+	String is cat(Name,', '),
+	Res1=[text(String)],
+	t0(T,Res2),
+	append(Res1,Res2,Res).
+
+template(X,Res):-
+	X=element(list,_,_),
+	findall(Entry,transform(X^entry,Entry),Entries), 
+	t0(Entries,Res).
+...
+
+ABC is 1,
+parse2(x26in,X), 
+traverse(X,Res),
+Y=element(top,[],Res), 
+parse2(Z,Y).
+
+% 3rd variant: w/ tmplates - full
+...
+template(X,Res):-
+	X=element(list,_,Children),
+	traverseElements(Children,Res).
+template(X,[Res]):-
+	X=element(entry,_,_),
+	transform(X@name,Name),
+	String is cat(Name,', '),
+	Res=text(String).
+...
+
+ABC is 1,
+parse2(x26in,X), 
+traverse(X,Res),
+Y=element(top,[],Res), 
+parse2(Z,Y).
+
+/*
+Remark:
+ Concatenating strings does not work for templates (e.g. no such text(..) passing in Res),
+ or concatenate everything in the main template
+*/

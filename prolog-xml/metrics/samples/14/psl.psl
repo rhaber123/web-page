@@ -1,0 +1,60 @@
+% 1st variant: w/o templates
+filter2(X,Y):-
+	X=element(car,_,_),
+	transform(X@checked,_),
+	transform(copy X,Y).
+filter([],[]).
+filter([X|T],[Y|T2]):-
+	transform(X@checked,_),
+	transform(copy X,Y),
+	filter(T,T2).
+filter([X|T],T2):-not(transform(X@checked,_)),filter(T,T2).
+
+construct([],[]).
+construct([H|T],[H2|T2]):-
+	H=element(car,AL,_),
+	transform(H@id,Id),
+	H2=element(p,[],[text('Car: '),text(Id)]),
+	construct(T,T2).
+	
+ABC is 1,
+parse2(x14in,X),
+findall(Car,transform(X^car,Car),Cars),
+filter(Cars,Cars2),
+construct(Cars2,CarConstructs),
+Y=element(top,[],CarConstructs),
+parse2(Z,Y).
+
+% 2nd variant: w/ templates
+...
+template(X,[element(p,[],[text('Car: '),text(Id)])]):-
+	X=element(car,_,_),
+	transform(X@checked,_),
+	transform(X@id,Id).
+...
+
+ABC is 1, 
+parse2(x14in,X), 
+traverse(X,Res), 
+Y=element(top,[],Res), 
+parse2(Z,Y).
+
+% 3rd variant: w/o templates - simplified
+
+%t0::[<car/>]->[<p/>]
+t0([],[]).
+t0([H|T],Res):-
+    transform(H@checked,_),!,
+    transform(H@id,Id),
+	Res1=[element(p,[],[text('Car: '),text(Id)])],
+	t0(T,Res2),
+	append(Res1,Res2,Res).
+t0([H|T],Res):-
+	t0(T,Res).
+	
+ABC is 1, 
+parse2(x14in,X), 
+findall(Car,transform(X^car,Car),Cars),
+t0(Cars,Res),
+Y=element(top,[],Res), 
+parse2(Z,Y).

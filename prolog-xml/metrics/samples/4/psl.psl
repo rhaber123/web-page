@@ -1,0 +1,33 @@
+% 1st variant: w/ template
+...
+template(element(employee,_,L),[element(b,[],[text(Text)])]):-
+	printChildren(L,Text).
+template(element(surname,_,L),[element(i,[],[text(Text)])]):-
+	printChildren(L,Text).
+...
+ABC is 1, 
+parse2(x4in,X), 
+traverse(X,Res), 
+Y=element(top,[],Res), 
+parse2(Z,Y).
+
+% 2nd variant: w/ element constructor
+
+...
+template(element(employee,[],[element(firstName,[],[Firstname]),element(surname,[],[Surname])]),
+         [element(b,[],[Firstname,Surname])]).
+...
+ABC is 1, 
+parse2(x4in,X), 
+traverse(X,Res), 
+Y=element(top,[],Res), 
+parse2(Z,Y).
+
+% 3rd variant: navigating
+
+ABC is 1,
+parse2(x4in,X),
+transform(X^employee,X2),
+printTree(X2,Res),
+Y=element(b,[],[text(Res)]),
+parse2(Z,Y).

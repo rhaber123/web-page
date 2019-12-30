@@ -1,0 +1,15 @@
+checkTrue('0','true').
+checkNotFalse(0,'not false').
+
+t(X,Res):-
+	transform(X^number#1,TNumber),
+	checkTrue(TNumber,String1),
+	checkNotFalse(TNumber,String2),
+	SRes is cat(String1,' ',String2),
+	Res=element(p,[],[text(SRes)]).
+
+ABC is 1,
+parse2(x45in,X),
+findall(P,t(X,P),Ps),
+Y=element(top,[],Ps),
+parse2(Z,Y).

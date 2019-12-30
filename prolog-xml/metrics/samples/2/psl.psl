@@ -1,0 +1,18 @@
+% 1. variant: template for text nodes
+...
+template(text(X),[text(X)]).
+...
+
+ABC is 1,
+parse2(x2in,X),
+traverse(X,Res),
+Y=element(top,[],Res),
+parse2(Z,Y).
+
+% 2nd variant: explicit text extraction of the input tree
+
+ABC is 1,
+parse2(x2in,X),
+printTree(X,TextX),
+Y=element(top,[],[text(TextX)]),
+parse2(Z,Y).

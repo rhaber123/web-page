@@ -1,0 +1,25 @@
+<TABLE border="1">
+  <TR>
+     <TH colspan="3">Welcome to XSL world.</TH>
+  </TR>
+  <TR>
+     <TH>string</TH>
+     <TH>starts-with</TH>
+     <TH>contains</TH>
+  </TR>
+  <TR>
+     <TD>Welcome</TD>
+     <TD>true</TD>
+     <TD>true</TD>
+  </TR>
+  <TR>
+     <TD>XSL</TD>
+     <TD>false</TD>
+     <TD>true</TD>
+  </TR>
+  <TR>
+     <TD>XML</TD>
+     <TD>false</TD>
+     <TD>false</TD>
+  </TR>
+</TABLE>

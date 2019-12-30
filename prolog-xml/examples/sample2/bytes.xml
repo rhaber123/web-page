@@ -1,0 +1,27 @@
+<html>
+
+<head/>
+
+<!-- comment; currently no namespaces supported, opening tags MUST correspond to closing tags; double quotes instead of single quotes, etc. -->
+<body>
+<table border="0" cellpadding="0" cellspacing="0" width="490" style="border-collapse:collapse;table-layout:fixed;width:368pt">
+ <col width="64" span="6" style="width:48pt"/>
+ <col width="106" style="mso-width-source:userset;mso-width-alt:3876;width:80pt"/>
+ <tr height="17" style="height:12.75pt">
+  <td height="17" class="xl2515852" width="64" style="height:12.75pt;width:48pt">No</td>
+  <td class="xl2215852" width="64" style="width:48pt">XSL</td>
+  <td class="xl2215852" width="64" style="width:48pt">PROLOG</td>
+  <td class="xl2315852" width="64" style="width:48pt" str="(2)">(2)</td>
+  <td class="xl1515852" width="64" style="width:48pt" str="(3)">(3)</td>
+  <td class="xl1515852" width="64" style="width:48pt" />
+  <td class="xl2715852" width="106" style="width:80pt"></td>
+ </tr>
+</table>
+
+<p>
+Author: Rene Haberland, 30.12.2018, Saint Petersburg, Russia<br/>licensed under Creative Commons 4.0 Share Alike (CC BY-SA 4.0)<br/>For more informations on the license terms, visit <a href="https://creativecommons.org">https://creativecommons.org</a><p/><p/>
+</p>
+</body>
+
+</html>
+

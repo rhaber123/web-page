@@ -1,0 +1,39 @@
+Program:
+
+Lines of code (brutto).....: 25
+Lines of code (netto)......: 22
+Number of comments.........: 0
+Comment to code ratio......: 0
+Number of procedures.......: 5
+Total number of clauses....: 5
+Number of commands.........: 0
+Number of goals............: 0
+Number of direct rec. calls: 2
+Number of edges............: 2
+Number of nodes............: 5
+Connectivity density.......: 0.4
+Call graph width...........: 3
+Call graph height..........: 2
+Hierarchical complexity....: 1.5
+Structural complexity......: 0.3333
+
+
+Procedures:
+
+name/arity             | NG| ID| OD| IC| OC| NR|DGMc|DGMs|Cut|NoC|NoR|
+-----------------------+---+---+---+---+---+---+----+----+---+---+---+
+getAllBBBs/2           |  1|  1|  0|  1|  0|  0|   5|   2|  0|  1|  1|
+getAllCCCs/2           |  1|  1|  0|  1|  0|  0|   5|   2|  0|  1|  1|
+getSomeBBB/2           |  4|  0|  0|  0|  0|  0|  10|   2|  0|  1|  1|
+getSomeCCC/2           |  4|  0|  0|  0|  0|  0|  10|   2|  0|  1|  1|
+go/0                   |  7|  0|  2|  0|  2|  0|  19|   4|  0|  1|  1|
+
+Clauses:
+
+name/arity/number          | NG| NC| NR|DGMc|DGMs|Cut|Typ|
+---------------------------+---+---+---+----+----+---+---+
+getAllBBBs/2/1             |  1|  0|  0|   5|   2|  0|  R|
+getAllCCCs/2/1             |  1|  0|  0|   5|   2|  0|  R|
+getSomeBBB/2/1             |  4|  0|  0|  10|   2|  0|  R|
+getSomeCCC/2/1             |  4|  0|  0|  10|   2|  0|  R|
+go/0/1                     |  7|  2|  0|  19|   4|  0|  R|

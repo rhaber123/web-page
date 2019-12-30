@@ -1,0 +1,10 @@
+<top>
+<DIV>
+  <B>//AAA : </B>2</DIV>
+<DIV>
+  <B>//CCC : </B>7</DIV>
+<DIV>
+  <B>//AAA/CCC : </B>2</DIV>
+<DIV>
+  <B>//CCC[text()]) : </B>5</DIV>
+</top>

@@ -1,0 +1,49 @@
+<table border="1" cellpadding="6">
+  <tr>
+     <th colspan="2">Axis: child</th>
+  </tr>
+  <tr>
+     <th>Element</th>
+     <th>Node-set</th>
+  </tr>
+  <tr>
+     <td>AAA id = a1</td>
+     <td>b1 b2 </td>
+  </tr>
+  <tr>
+     <td>BBB id = b1</td>
+     <td/>
+  </tr>
+  <tr>
+     <td>BBB id = b2</td>
+     <td/>
+  </tr>
+  <tr>
+     <td>AAA id = a2</td>
+     <td>b3 b4 c1 b5 </td>
+  </tr>
+  <tr>
+     <td>BBB id = b3</td>
+     <td/>
+  </tr>
+  <tr>
+     <td>BBB id = b4</td>
+     <td/>
+  </tr>
+  <tr>
+     <td>CCC id = c1</td>
+     <td>c2 </td>
+  </tr>
+  <tr>
+     <td>CCC id = c2</td>
+     <td/>
+  </tr>
+  <tr>
+     <td>BBB id = b5</td>
+     <td>c3 </td>
+  </tr>
+  <tr>
+     <td>CCC id = c3</td>
+     <td/>
+  </tr>
+</table>

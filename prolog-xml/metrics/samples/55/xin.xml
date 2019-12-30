@@ -1,0 +1,10 @@
+<source>
+
+<chapter id="intro">Introduction</chapter>
+<chapter id="body">
+     <title id="t1">BODY</title>
+     <text value="text1">text text text</text>
+</chapter>
+<chapter id2="end">THE END</chapter>
+
+</source>

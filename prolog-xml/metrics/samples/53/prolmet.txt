@@ -1,0 +1,35 @@
+Program:
+
+Lines of code (brutto).....: 31
+Lines of code (netto)......: 29
+Number of comments.........: 0
+Comment to code ratio......: 0
+Number of procedures.......: 2
+Total number of clauses....: 3
+Number of commands.........: 0
+Number of goals............: 0
+Number of direct rec. calls: 4
+Number of edges............: 2
+Number of nodes............: 2
+Connectivity density.......: 1
+Call graph width...........: 1
+Call graph height..........: 2
+Hierarchical complexity....: 0.5
+Structural complexity......: 1.333
+
+
+Procedures:
+
+name/arity             | NG| ID| OD| IC| OC| NR|DGMc|DGMs|Cut|NoC|NoR|
+-----------------------+---+---+---+---+---+---+----+----+---+---+---+
+go/0                   | 19|  0|  1|  0|  3|  0|  53|   9|  0|  1|  1|
+it/3                   |  8|  2|  1|  4|  1|  1|  29|  10|  0|  2|  1|
+
+
+Clauses:
+
+name/arity/number          | NG| NC| NR|DGMc|DGMs|Cut|Typ|
+---------------------------+---+---+---+----+----+---+---+
+go/0/1                     | 19|  3|  0|  53|   9|  0|  R|
+it/3/1                     |  0|  0|  0|   6|   3|  0|  F|
+it/3/2                     |  8|  1|  1|  27|   8|  0|  R|

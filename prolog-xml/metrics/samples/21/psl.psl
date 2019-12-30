@@ -1,0 +1,46 @@
+% 1st variant: w/o templates
+
+getTRs([],[]).
+getTRs([H|T],[H2|T2]):-
+	H2=element('TR',[],[element('TH',[],[text(H)])]),
+	getTRs(T,T2).
+	
+ABC is 1,parse2(x21in,X),
+findall(Id,transform(X^word@id,Id),Ids),
+quicksort(Ids,upper_first,S),
+getTRs(S,TRs),
+Y=element('TABLE',[],TRs),
+parse2(Z,Y).
+
+% 2nd variant: w/ templates
+...
+getTRs([],[]).
+getTRs([H|T],[H2|T2]):-
+	H2=element('TR',[],[element('TH',[],[text(H)])]),
+	getTRs(T,T2).
+	
+template(X,Res):-
+	X=element(source,_,Children),
+	findall(Id,transform(X^word@id,Id),Ids),
+    quicksort(Ids,upper_first,S),
+    getTRs(S,Res).
+...
+
+ABC is 1,parse2(x21in,X),
+traverse(X,Res),
+Y=element('TABLE',[],Res),
+parse2(Z,Y).
+
+
+/*
+ Advantage of an aggration function:
+   e.g. when eliminating duplicates (setof or member-arrows); in XSLT are quite laborious...
+   
+ further predicates (with examples):
+  quicksort(['czech','cook','Czech','Took','took','TooK'],upper_first,X).
+  quicksort(['czech','cook','Czech','Took','took','TooK'],lower_first,X).
+  quicksort(['czech','cook','Czech','Took','took','TooK'],first_upper,X).
+  quicksort(['czech','cook','Czech','Took','took','TooK'],first_lower,X).   
+  CAUTION: upper_first has type: atom->atom->boolean, but in XSLT type would be: Node->Node->boolean
+  		=> eventually a new predicate would be needed as top-level
+*/

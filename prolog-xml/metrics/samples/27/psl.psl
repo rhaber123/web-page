@@ -1,0 +1,54 @@
+% 1st variant: w/o templates
+
+xchg([],[]).
+xchg([H|T],[H2|T2]):-
+	transform(name H,Name),
+	transform(H#1,Text),
+	S is cat(Name,': ',Text),
+	H2=element(p,[],[text(S)]),
+	xchg(T,T2).
+
+ABC is 1, 
+parse2(x27in,X), 
+transform(X^'SECTION',Section1), 
+transform(X^'SECTION',Section2),
+transform(child Section1,element('SUMMARY',_,_)), 
+Section1\=Section2, transform(Section1/'SUMMARY'#1,Summary), 
+transform(name Section1/'SUMMARY',Name), 
+S1 is cat(Name,': ',Summary), 
+P1=element(p,[],[text(S1)]), 
+findall(Data,transform(Section2/'DATA',Data),Datas), 
+xchg(Datas,List), 
+Y=element(top,[],[P1|List]), 
+parse2(Z,Y).
+
+% 2nd variant: w/ templates
+
+...
+template(X,[element('P',[],[text('SUMMARY: '),text(Text)])]):-
+	X=element('SECTION',_,_),
+	transform(X/'SUMMARY',Summary),
+	transform(Summary#1,Text).
+	
+template(X,Res):-
+	X=element(section,_,Children),
+	traverseElements(Children,Res).
+	
+template(X,[Res]):-
+	X=element('DATA',_,_),
+	transform(X#1,Text),
+	Res=element('P',[],[text('DATA: '),text(Text)]).
+...
+
+ABC is 1,
+parse2(x27in,X),
+traverse(X,Res),
+Y=element(top,[],Res),
+parse2(Z,Y).
+
+/*
+Remark: 
+ variant 2 simulates 'for-each' by an extra template
+  a 'genuine' for-each cycle can be resolved by a helper predicate
+		   t0::[data-node]->[result-node]
+*/

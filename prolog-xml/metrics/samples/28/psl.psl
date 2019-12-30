@@ -1,0 +1,51 @@
+% 1st variant: w/o templates
+
+testNumber(S,' (the text starts with a number)'):-
+	atom_codes(S,SCodes),
+	SCodes=[H|T],
+	H>=48,H=<57,!.
+testNumber(_,'').
+
+xchg([],[]).
+xchg([H|T],[H2|T2]):-
+    transform(H#1,Text),
+    testNumber(Text,NumbText),
+    H2=element('P',[],[text(Text),text(' '),text(NumbText)]),
+    xchg(T,T2).
+
+ABC is 1, 
+parse2(x28in,X), 
+findall(Value,transform(X^value,Value),Values), 
+xchg(Values,List), 
+Y=element(top,[],List), 
+parse2(Z,Y).
+
+% 2nd variant: w/ templates
+...
+testNumber(S,' (the text starts with a number)'):-
+	atom_codes(S,SCodes),
+	SCodes=[H|T],
+	H>=48,H=<57,!.
+testNumber(_,'').
+
+template(X,[Res]):-
+	X=element(value,_,_),
+	transform(X#1,Text),
+    testNumber(Text,NumbText),
+    Res=element('P',[],[text(Text),text(' '),text(NumbText)]).
+...
+
+ABC is 1, 
+parse2(x28in,X), 
+traverse(X,Res),
+Y=element(top,[],Res), 
+parse2(Z,Y).
+
+
+/*
+ Remark:
+    - text(..)-nodes do not add blanks to the console output
+    - concat-operator is invertible in general (concat(?E1,?E2,?A1))
+       where at least 2 parameters have to be known 
+       (exception E1,E2 simultaneously -> A1 only contains trivial solutions)
+ */

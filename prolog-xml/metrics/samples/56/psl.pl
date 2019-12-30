@@ -1,0 +1,57 @@
+t0(X,Res,Res2):-
+	X=element(ref,_,_),
+	append(Res,[X],Res2),!.
+t0(element(Name,_,[H|T]),Res,Res2):-
+	Name\=ref,
+	t0(H,[],ResH),
+	append(Res,ResH,Res11),
+	t0(element(Name,_,T),Res11,Res2),!.
+t0(_,Res,Res).
+
+s0(Refs,[],Res,Res):-!.
+s0(Refs,[H|T],Res,Res2):-
+	H=element(ref,_,_),
+	nth(Nth,Refs,H),
+	SNth is string(Nth),
+	append(Res,[element(sup,[],[text(SNth)])],Res1),
+	s0(Refs,T,Res1,Res2).
+s0(Refs,[H|T],Res,Res2):-
+	H\=element(ref,_,_),
+	append(Res,[H],Res1),
+	s0(Refs,T,Res1,Res2).
+
+r0(Notes,Refs,[],Res,Res).
+r0(Notes,Refs,[H|T],Res,Res2):-
+	transform(H@id,Id), 
+	AllNotes=element(_,_,Notes), 
+	transform(AllNotes/note,Note),
+	Att1 is cat('id=',Id),   
+	Note=element(note,[Att1],_),
+	transform(Note#1,TNoteText),
+	nth(Pos,Refs,H),
+	SPos is string(Pos),
+	SDivText is cat(SPos,'. ',TNoteText),
+	Div1=element(div,[],[text(SDivText)]),
+	append(Res,[Div1],Res1),
+	r0(Notes,Refs,T,Res1,Res2).
+
+template(X,Res):-
+	% <xsl:apply-templates select="//doc"/>
+	X=element(source,_,_),
+	t0(X,[],Refs),
+	transform(X^doc,Doc),
+	Doc=element(_,_,Children),
+	s0(Refs,Children,[],DocRes),
+	% <HR/>
+	HRRes=element(hr,[],[]),
+	% <xsl:for-each select="//ref"> ...
+	findall(Note,transform(X^note,Note),Notes),
+	r0(Notes,Refs,Refs,[],DivRes),
+	append(DocRes,[HRRes|DivRes],Res).
+
+go:-
+ ABC is 1,
+ parse2(x56in,X),
+ traverse(X,Res),
+ Y=element(top,[],Res),
+ parse2(Z,Y).

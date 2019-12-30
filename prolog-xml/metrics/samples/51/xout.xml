@@ -1,0 +1,29 @@
+<TABLE>
+  <TR>
+     <TH colspan="4">Normalized text</TH>
+  </TR>
+  <TR>
+     <TD>Starting length:</TD>
+     <TD>15</TD>
+     <TD>Normalized length:</TD>
+     <TD>15</TD>
+  </TR>
+  <TR>
+     <TH colspan="4">Sequences   of      whitespace characters</TH>
+  </TR>
+  <TR>
+     <TD>Starting length:</TD>
+     <TD>41</TD>
+     <TD>Normalized length:</TD>
+     <TD>34</TD>
+  </TR>
+  <TR>
+     <TH colspan="4">    Leading and trailing whitespace.    </TH>
+  </TR>
+  <TR>
+     <TD>Starting length:</TD>
+     <TD>40</TD>
+     <TD>Normalized length:</TD>
+     <TD>32</TD>
+  </TR>
+</TABLE>

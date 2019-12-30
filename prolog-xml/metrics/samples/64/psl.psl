@@ -1,0 +1,45 @@
+% 1st variant: w/o templates
+
+ABC is 1,
+parse2(x64in,X),
+transform(X^h1#1,GREETING),
+transform(X^p#1,HELLO),
+H1=element(h1,['align="center"','style="color:red"'],[text(GREETING)]),
+P=element(p,['align="left"','style="color:blue"'],[text(HELLO)]),
+Y=element(top,[],[H1,P]),
+parse2(Z,Y).
+
+% 2nd variant: w/ templates - shortened
+...
+template(X,[H1,P]):-
+	X=element(source,_,_),
+	transform(X^h1#1,GREETING),
+	transform(X^p#1,HELLO),
+	H1=element(h1,['align="center"','style="color:red"'],[text(GREETING)]),
+	P=element(p,['align="left"','style="color:blue"'],[text(HELLO)]).
+...
+
+ABC is 1,
+parse2(x64in,X),
+traverse(X,Res),
+Y=element(top,[],Res),
+parse2(Z,Y).
+
+% 3rd variant: w/ templates - full
+...
+template(X,Res):-
+	X=element(source,_,Children),
+	traverseElements(Children,Res).
+template(X,Res):-
+	X=element(h1,_,C),
+	Res=[element(h1,['align="center"','style="color:red"'],C)].
+template(X,Res):-
+	X=element(p,_,_),
+	Res=[element(p,['align="left"','style="color:blue"'],C)].
+...
+
+ABC is 1,
+parse2(x64in,X),
+traverse(X,Res),
+Y=element(top,[],Res),
+parse2(Z,Y).

@@ -1,0 +1,20 @@
+ABC is 1, parse2(x55in,X), 
+transform(X^chapter,Chapter), 
+transform(Chapter id '"intro"',Z), 
+transform(Chapter#1,Introduction), 
+P1=element(p,[],[text(Introduction)]), 
+transform(X^chapter/text#1,TText), 
+P2=element(p,[],[text(TText)]), 
+transform(X^text,Text2), 
+transform(Text2 id '"text1"',_), 
+transform(Text2#1,TText2), 
+P3=element(p,[],[text(TText2)]), 
+Y=element(top,[],[P1,P2,P3]), 
+parse2(Z,Y).
+
+/*
+Semantics:
+  'id' means the entire tree in XSLT, in Prolog application only to one node
+
+  XSLT returns the corresponding text node; here only the matching attribute name
+*/

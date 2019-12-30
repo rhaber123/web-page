@@ -1,0 +1,25 @@
+
+		Lines of code (brutto)........: 36
+		Lines of code (netto).........: 32
+		Number of element-nodes.......: 20
+		Number of comments............: 0
+		Number of PIs.................: 0
+		Number of text-nodes..........: 35
+		Comment-to-Code ratio.........: 0
+		Number of templates...........: 2
+		Number of variables...........: 0
+		Number of parameters..........: 0
+		Number of parameters with.....: 0
+		Number of templates...........: 2
+		Number of xsl:call-tempates...: 1
+		Number of xsl:apply-template..: 0
+		Number of direct rec. calls...: 0
+		Number of edges...............: 1
+				template match: / name:  parameters: 0 with-parameters: 0 calls: 1
+				template match:  name: print parameters: 0 with-parameters: 0 calls: 0
+		Connectivity density..........: 0.05
+		Call graph width..............: 1
+		Call graph height.............: 2
+		Hierarchical complexity.......: 
+		Structural complexity.........: 
+		

@@ -1,0 +1,20 @@
+<source>
+
+<AAA>
+     <BBB>
+          <CCC>Carl</CCC>
+     </BBB>
+     <BBB/>
+     <BBB/>
+</AAA>
+<AAA>
+     <BBB/>
+     <BBB>
+          <CCC>John</CCC>
+          <CCC>Charles</CCC>
+          <CCC>Robert</CCC>
+          <CCC>Anthony</CCC>
+     </BBB>
+</AAA>
+
+</source>

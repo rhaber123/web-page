@@ -1,0 +1,10 @@
+<top>
+<DIV>
+  <B>Text: </B>Welcome to XSL world.</DIV>
+<B>Text before XSL: </B>Welcome to <DIV>
+  <B>Text after XSL: </B> world.</DIV>
+<DIV>
+  <B>Text from position 4: </B>come to XSL world.</DIV>
+<DIV>
+  <B>Text from position 4 of length  10: </B>come to XS</DIV>
+</top>

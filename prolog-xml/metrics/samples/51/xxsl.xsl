@@ -1,0 +1,27 @@
+<xsl:stylesheet version = '1.0'
+     xmlns:xsl='http://www.w3.org/1999/XSL/Transform'>
+
+<xsl:template match="/">
+     <TABLE>
+          <xsl:for-each select="//text">
+               <TR>
+                    <TH colspan="4">
+                         <xsl:value-of select="."/>
+                    </TH>
+               </TR>
+               <TR>
+                    <TD>Starting length:</TD>
+                    <TD>
+                         <xsl:value-of select="string-length(.)"/>
+                    </TD>
+                    <TD>Normalized length:</TD>
+                    <TD>
+                         <xsl:value-of select="string-length(normalize-space(.))"/>
+                    </TD>
+               </TR>
+          </xsl:for-each>
+     </TABLE>
+</xsl:template>
+
+
+</xsl:stylesheet>

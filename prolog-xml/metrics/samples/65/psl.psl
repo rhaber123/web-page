@@ -1,0 +1,67 @@
+% 1st variant: w/ templates
+
+...
+checkIsFirst(AAA,Res):-
+	transform(AAA@name,'first'),
+	findall(BBB,transform(AAA/'BBB',BBB),BBBs),
+ 	printChildren(BBBs,Res),!.
+checkIsFirst(_,'').
+
+template(X,[element(table,['border="1"'],[Header|Footer])]):-
+	X=element(source,_,Children),
+	Header=element(tr,[],[element(th,[],[text(' . ')]),element(th,[],[text('current()')])]),
+	traverseElements(Children,Footer).
+	
+template(AAA,[TR1,TR2]):-
+	AAA=element('AAA',_,_),
+	transform(AAA@name,Name),
+	CurrentName=Name,
+	transform(AAA/'BBB',BBB),
+	transform(BBB@name,'first'),
+	transform(BBB#1,BBBFirst),
+    checkIsFirst(AAA,SBBBCurrentFirst),
+	TR1=element(tr,[],[element(td,[],[text(Name)]),element(td,[],[text(CurrentName)])]),
+	TR2=element(tr,[],[element(td,[],[text(BBBFirst)]),element(td,[],[text(SBBBCurrentFirst)])]).
+...
+
+ABC is 1, 
+parse2(x65in,X), 
+traverse(X,Res),
+Res=[Y],
+parse2(Z,Y).
+
+% 2nd variant: w/o templates
+checkIsFirst(AAA,Res):-
+	transform(AAA@name,'first'),
+	findall(BBB,transform(AAA/bbb,BBB),BBBs),
+ 	printChildren(BBBs,Res),!.
+checkIsFirst(_,'').
+
+t(X,Res):-
+	transform(X^aaa,AAA),
+	transform(AAA@name,Name),
+	CurrentName=Name,
+	transform(AAA/bbb,BBB),
+	transform(BBB@name,'first'),
+	transform(BBB#1,BBBFirst),
+	checkIsFirst(AAA,SBBBCurrentFirst),
+	TR1=element(tr,[],[element(td,[],[text(Name)]),element(td,[],[text(CurrentName)])]),
+	TR2=element(tr,[],[element(td,[],[text(BBBFirst)]),element(td,[],[text(SBBBCurrentFirst)])]),
+	Res=[TR1,TR2].
+	
+ABC is 1, 
+parse2(x65in,X), 
+Header=element(tr,[],[element(th,[],[text(' . ')]),element(th,[],[text('current()')])]), 
+findall(TR,t(X,TR),TRs), 
+concat(TRs,Footer), 
+Y=element(table,['border="1"'],[Header|Footer]),
+parse2(Z,Y).
+
+/*
+ Remarks:
+ 
+ there is no XSLT-specific "/" for root
+
+ - 'current' is always specified by its corresponding symbol (this is different to XSLT's current())
+ - whenever transformation is correct and the (Java-based) serialiser crashes, 'checkSerializable0' should be used first for error locating!
+*/

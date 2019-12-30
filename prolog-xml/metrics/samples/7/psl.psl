@@ -1,0 +1,6 @@
+template(X,element(div,['style="color:purple"'],[text('AAA id='),text(Id)])):-X=element('AAA',A,L),transform(X@id,Id).
+
+----------------------
+call:
+
+ABC is 1,parse2(x7in,X),traverse(X),parse2(Z,Y).

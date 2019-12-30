@@ -1,0 +1,31 @@
+<top>
+<TABLE>
+  <TR>
+     <TD style="color:blue">blue</TD>
+  </TR>
+</TABLE>
+
+<TABLE>
+  <TR>
+     <TD style="color:navy">navy</TD>
+  </TR>
+</TABLE>
+
+<TABLE>
+  <TR>
+     <TD style="color:green">green</TD>
+  </TR>
+</TABLE>
+
+<TABLE>
+  <TR>
+     <TD style="color:lime">lime</TD>
+  </TR>
+</TABLE>
+
+<TABLE>
+  <TR>
+     <TD style="color:red">red</TD>
+  </TR>
+</TABLE>
+</top>

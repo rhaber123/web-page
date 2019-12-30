@@ -1,0 +1,7 @@
+transform(
+ X,
+ element(top,[],[
+   element(p,[],[element(b,[],[text(X//bold#)])]),
+   element(p,['style="color:red"'],[text(X//red#)]),
+   element(p,[],[element(i,[],[text(X//italic#)])])])
+).

@@ -1,0 +1,7 @@
+<source>
+
+<dog name="Joe">
+     <data weight="18 kg" color="black"/>
+</dog>
+
+</source>

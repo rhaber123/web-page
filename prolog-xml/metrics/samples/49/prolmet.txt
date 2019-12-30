@@ -1,0 +1,42 @@
+Program:
+
+Lines of code (brutto).....: 34
+Lines of code (netto)......: 28
+Number of comments.........: 1
+Comment to code ratio......: 0.0357
+Number of procedures.......: 5
+Total number of clauses....: 8
+Number of commands.........: 0
+Number of goals............: 0
+Number of direct rec. calls: 4
+Number of edges............: 4
+Number of nodes............: 5
+Connectivity density.......: 0.8
+Call graph width...........: 2
+Call graph height..........: 3
+Hierarchical complexity....: 0.6667
+Structural complexity......: 0.6667
+
+
+Procedures:
+
+name/arity             | NG| ID| OD| IC| OC| NR|DGMc|DGMs|Cut|NoC|NoR|
+-----------------------+---+---+---+---+---+---+----+----+---+---+---+
+checkContains/3        |  1|  1|  0|  1|  0|  0|   7|   4|  0|  2|  1|
+checkStarts_with/3     |  1|  1|  0|  1|  0|  0|   7|   4|  0|  2|  1|
+go/0                   |  5|  0|  0|  0|  0|  0|  10|   0|  0|  1|  1|
+t0/3                   |  9|  2|  3|  2|  3|  1|  39|  15|  0|  2|  1|
+template/2             |  6|  0|  1|  0|  1|  0|  26|   8|  0|  1|  1| 
+
+Clauses:
+
+name/arity/number          | NG| NC| NR|DGMc|DGMs|Cut|Typ|
+---------------------------+---+---+---+----+----+---+---+
+checkContains/3/1          |  1|  0|  0|   5|   3|  0|  R|
+checkContains/3/2          |  0|  0|  0|   6|   3|  0|  F|
+checkStarts_with/3/1       |  1|  0|  0|   5|   3|  0|  R|
+checkStarts_with/3/2       |  0|  0|  0|   6|   3|  0|  F|
+go/0/1                     |  5|  0|  0|  10|   0|  0|  R|
+t0/3/1                     |  0|  0|  0|   6|   3|  0|  F|
+t0/3/2                     |  9|  3|  1|  37|  13|  0|  R|
+template/2/1               |  6|  1|  0|  26|   8|  0|  R|

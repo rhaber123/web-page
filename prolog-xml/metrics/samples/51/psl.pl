@@ -1,0 +1,22 @@
+t(X,[Res]):-
+	transform(X^text#1,TText),
+	TR1=element('TR',[],[element('TH',['colspan="4"'],[text(TText)])]),
+	TD1=element('TD',[],[text('Starting length:')]),
+	StringLen is string_length(TText),
+	SStringLen is string(StringLen),
+	TD2=element('TD',[],[text(SStringLen)]),
+	TD3=element('TD',[],[text('Normalized length:')]),
+	NormalizedTText is normalize_space(TText),
+	NormalizedTTextLen is string_length(NormalizedTText),
+	SNormalizedTTextLen is string(NormalizedTTextLen),
+	TD4=element('TD',[],[text(SNormalizedTTextLen)]),
+	TR2=element('TR',[],[TD1,TD2,TD3,TD4]),
+	Res=element(empty,[],[TR1,TR2]).
+	
+go:-
+ ABC is 1,
+ parse2(x51in,X),
+ findall(TR,t(X,TR),TRs),
+ concat(TRs,TRs2),
+ Y=element('TABLE',[],TRs2),
+ parse2(Z,Y).

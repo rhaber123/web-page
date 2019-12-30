@@ -1,0 +1,17 @@
+% ordering in which the rules have to be applied:
+%   first all BBB-nodes go, then CCC -> DDD -> AAA
+%  By doing this nodes in arbitrary ordering are visited within the tree
+
+template2(X,element(div,['style="color:navy"'],[text('AAA id='),text(Id)]),[]):-X=element('AAA',A,L),transform(X@id,Id).
+template2(X,element(div,['style="color:purple"'],[text('BBB id='),text(Id)]),[]):-X=element('BBB',A,L),transform(X@id,Id).
+template2(X,element(div,['style="color:red"'],[text('CCC id='),text(Id)]),[]):-X=element('CCC',A,L),transform(X@id,Id).
+template2(X,element(div,['style="color:blue"'],[text('DDD id='),text(Id)]),[]):-X=element('DDD',A,L),transform(X@id,Id).
+
+template2(X,[],[]):-X=element(source,_,_),
+		findall(BBB,transform(X^'BBB',BBB),BBBs),traverseElements2(BBBs),
+		findall(CCC,transform(X^'CCC',CCC),CCCs),traverseElements2(CCCs),
+		findall(DDD,transform(X^'DDD',DDD),DDDs),traverseElements2(DDDs),
+		findall(AAA,transform(X^'AAA',AAA),AAAs),traverseElements2(AAAs).
+
+-----
+write('\n'),ABC is 1,parse2(x9in,X),traverse2(X).

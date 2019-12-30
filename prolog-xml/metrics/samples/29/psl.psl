@@ -1,0 +1,91 @@
+% 1st variant: the shortest, w/o templates - in general not sound, because only upper level considered
+
+t(X,Res):-
+	transform(X^chapter,C),
+	Pos is position(C,X),
+	transform(C#1,Name),
+	SPos is string(Pos),
+	Res=element('TR',[],[element('TD',[],[text(SPos)]),element('TD',[],[text(Name)])]).
+
+ABC is 1,  
+parse2(x29in,X),
+findall(TR,t(X,TR),TRs),
+Y=element('TABLE',['border="1"'],TRs),
+parse2(Z,Y).
+
+% 2nd variant: w/ templates - fails, since template in general does not know node above (and globals are in general not allowed)
+template(X,[Tab1]):-
+	X=element(source,_,Children),
+	Res1=[element(tr,[],[element(th,[],[text('Number')]),element(th,[],[text('text')])])],
+	traverseElements(Children,Res2),
+	append(Res1,Res2,Res),
+	Tab1=element(table,['border="1"'],Res).
+template(X,[Res]):-
+	X=element(chapter,_,Children),
+	traverseElements(Children,Res).
+template(text(X),[element(tr,[],[element(td,[],[text('###')]),element(td,[],[text(X)])])]).
+%
+replace(X,A,A2):-
+    transform(X^source,Source),
+    Source=element(_,_,Children),
+    transform(Source/chapter,A),
+    nth(Pos,Children,A),
+    SPos is string(Pos),
+    transform(A#1,ChapterText),
+	A2=element(tr,[],[text(SPos),text(ChapterText)]).
+replace(X,A,A2):-
+    transform(X^chapter,Source),
+    Source=element(_,_,Children),
+    transform(Source/chapter,A),
+    nth(Pos,Children,A),
+    SPos is string(Pos),
+    transform(A#1,ChapterText),
+	A2=element(tr,[],[text(SPos),text(ChapterText)]).
+%	
+	
+...
+ABC is 1,  
+parse2(x29in,X),
+traverse(X,Res),
+Y=element(top,[],Res),
+???
+replace(X,A,A2)
+???
+parse2(Z,Y2).
+
+% 3rd variant: w/ templates  - chapters are triggered top-down (position is propagated down)
+...
+%t::TreeNode->[TreeNode]
+t(Sup,Children,Res):-
+	append(Pre,[H|Post],Children),
+	H=element(chapter,_,[Y|Ys]),
+	length(Pre,Len2),
+	Len is Len2+1,
+	SPos is string(Len),
+	transform(H#1,TText),
+	Res1_1 = [element('TR',[],[element('TD',[],[text(SPos)]),element('TD',[],[text(TText)])])], 
+	t(H,Ys,Res1_2),
+	append(Res1_1,Res1_2,Res1),
+	append(Pre,[e|Post],Children2),  
+	t(Sup,Children2,Res2),
+	append(Res1,Res2,Res),!.
+t(X,_,[]).
+
+% template::Node->[Node]
+template(element(source,_,Children),Res):-
+	t(element(source,_,Children),Children,Res).
+...
+
+ABC is 1,
+parse2(x29in,X),
+traverse(X,Res),
+Header=element('TR',[],[element('TH',[],[text('Number')]),element('TH',[],[text('text')])]),
+Y=element('TABLE',['border="1"'],[Header|Res]),
+parse2(Z,Y).
+
+/*
+ Remarks:
+  - hidden assumption: there is no node that may match with an upper node (they always are distinct)
+  - Q: 
+      What shall happen if path expression is incomplete, shall the expression be completed as far as possible !?
+*/

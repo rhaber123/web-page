@@ -1,0 +1,41 @@
+% 1st variant: w/o templates
+ABC is 1, parse2(x24in,X), 
+transform(X^p,P), 
+transform(copy_of P,P1), 
+transform(copy P,P2), 
+transform(P#1,Text1), 
+transform(P/B#1,Text2), 
+P3 is cat(Text1,' ',Text2), 
+Div1=element(div,[],[element(b,[],[text('copy-of : ')]),P1]), 
+Div2=element(div,[],[element(b,[],[text('copy : ')]),P2]), 
+Div3=element(div,[],[element(b,[],[text('value-of : ')]),text(P3)]), 
+Y=element(top,[],[Div1,Div2,Div3]),
+parse2(Z,Y).
+
+% 2nd variant: w/ templates
+...
+template(X,[Div1,Div2,Div3]):-
+	X=element(p,_,_),
+	transform(copy_of X,P1),
+	transform(copy X,P2),
+	printTree(X,P3),
+	Div1=element('DIV',[],[element('B',[],[text('copy-of : ')]),P1]),
+	Div2=element('DIV',[],[element('B',[],[text('copy : ')]),P2]),
+	Div3=element('DIV',[],[element('B',[],[text('value-of : ')]),text(P3)]).
+...
+
+ABC is 1,
+parse2(x24in,X),
+traverse(X,Res),
+Y=element(top,[],Res),
+parse2(Z,Y).
+
+
+/* 
+ Remark:
+ 
+ There is a differing semantics! In XSLT outing nodes means all text nodes are toString-ed and those concatenated together, where in Prolog there is no standard-output of nodes (would be equivalanet to printTree, but could also be different).
+
+ In output: "Comparethese constructs." instead of "Compare these constructs.",
+      because blanks in the original are skipped (parser ignores blanks in between text- and element-nodes).
+*/

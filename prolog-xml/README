@@ -1,0 +1,26 @@
+ COPYRIGHT notification
+Author: René Haberland, 30.12.2018, Saint Petersburg, Russia
+
+All software, statistics, samples containing in this folder are licensed under Creative Commons 4.0 Share Alike (CC BY-SA 4.0), applicable wordwide.
+
+
+The software had been discussed and contributed to the AMICT08 (8th International Conference on Advanced Methods in Information and Communication Technology) conference proceedings, and published since then in conference articles.
+  LEGACY LICENSING: In case you personally were granted rights to use the software before the new CC4.0.SA license, this was always only under the condition of naming the author and for non-commercial purposes only - as you were definetely informed about it.
+
+
+3RD PARTY SOFTWARE USING:
+ - Apache Xalan, Apache License
+ - tuProlog (University of Bologna, Italy), GPL version 3
+ - Samples were in the years 2007/2008 taken from ZVON.org (to that time under PUBLIC DOMAIN)
+
+
+
+Makefile target:
+
+test-xtl: xtl.jar
+	rm -f _t.out
+	java -jar xtl.jar examples/sample1/in.xml examples/sample1/schema.pl _t.out
+	diff -q _t.out examples/sample1/expected2.out
+	java -jar xtl.jar examples/sample2/bytes.xml examples/sample2/schema.pl _t.out
+	diff -q _t.out examples/sample2/expected.xml
+	rm -f _t.out

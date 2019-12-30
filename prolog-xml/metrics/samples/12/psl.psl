@@ -1,0 +1,27 @@
+% 1st variant: w/o templates
+
+ABC is 1,parse2(x12in,X),
+BDog=element(b,[],[text('Dog: ')]),
+BColor=element(b,[],[text('Color: ')]),
+transform(X^dog@name,Name),
+E1=element(p,[],[BDog,text(Name)]), 
+transform(X^data@color,Color), 
+E2=element(p,[],[BColor,text(Color)]), 
+Y=element(top,[],[E1,E2]),parse2(Z,Y).
+
+% 2nd variant: w/ templates
+...
+template(X,[P1,P2]):-
+	X=element(dog,_,_),
+	transform(X@name,Name),
+	SName is string(Name),
+	transform(X/data@color,Color),
+	P1=element(p,[],[element(b,[],[text('Dog: ')]),text(SName)]),
+	P2=element(p,[],[element(b,[],[text('Color: ')]),text(Color)]).
+...
+
+ABC is 1,
+parse2(x12in,X),
+traverse(X,Res),
+Y=element(top,[],Res),
+parse2(Z,Y).

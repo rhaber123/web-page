@@ -1,0 +1,18 @@
+transform(
+element(source,[],[
+ element(bold,[],[Bold]),
+ element(red,[],[Red]),
+ element(italic,[],[Fine])])
+,
+element(top,[],[
+ element(p,[],[element(b,[],[Bold])]),
+ element(p,['style="color:red"'],[Red]),
+ element(p,[],[element(i,[],[Fine])])])
+).
+
+% navigating
+transform(X,
+ element(top,[],[
+  element(p,[],[element(b,[],[text(X/bold/#)])]),
+  element(p,['style="color:red"'],[text(X/red#)]),
+  element(p,[],[element(i,[],[text(X/italic#)])])])).

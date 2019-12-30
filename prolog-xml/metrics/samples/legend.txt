@@ -1,0 +1,37 @@
+metrics for PROLOG:
+===================
+
+
+Program:
+
+Lines of code (brutto).....: 
+Lines of code (netto)......: 
+Number of comments.........: 
+Comment to code ratio......: 
+Number of procedures.......: 
+Total number of clauses....: 
+Number of commands.........: 
+Number of goals............: 
+Number of direct rec. calls: 
+Number of edges............: 
+Number of nodes............: 
+Connectivity density.......: 
+Call graph width...........: 
+Call graph height..........: 
+Hierarchical complexity....: 
+Structural complexity......: 
+
+Procedures:
+
+NG Number of Goals
+ID incoming vertex degree (no. of different callers)
+OD outgoing vertex degree (different procedure calls)
+IC number of incomings (no. of calls)
+OC number of outgoings (procedure calls)
+NR number of direct recursive calls
+DGMc Data Graph Model Complexity
+DGMs Data Graph Model Size
+Cut no. of cuts
+NoC no. of clauses
+NoR no. of rules
+Typ type of clause (R=rule, F=fact)

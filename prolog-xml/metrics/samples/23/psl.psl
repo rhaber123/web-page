@@ -1,0 +1,31 @@
+% 1st variant: w/o templates
+%t0::[Treenode]->[<color/>]->[<table/>]
+t0(X,[],[]).
+t0(X,[H|T],Res):-
+	transform(H#1,Text),
+	Att1 is cat('style="color:',Text,'"'),
+	Res1=[element('TABLE',[],[element('TR',[],[element('TD',[Att1],[text(Text)])])])],
+	t0(X,T,Res2),
+	append(Res1,Res2,Res).
+
+ABC is 1,
+parse2(x23in,X),
+findall(Color,transform(X^color,Color),Colors),
+t0(X,Colors,Res),
+Y=element(top,[],Res),
+parse2(Z,Y).
+
+% 2nd variant: w/ templates
+...
+template(X,[Res]):-
+	X=element(color,_,_),
+	transform(X#1,Text),
+	Att1 is cat('style="color:',Text,'"'),
+	Res=element('TABLE',[],[element('TR',[],[element('TD',[Att1],[text(Text)])])]).
+...
+
+ABC is 1, 
+parse2(x23in,X), 
+traverse(X,Res),
+Y=element(top,[],Res),
+parse2(Z,Y).
