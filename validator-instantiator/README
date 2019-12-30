@@ -1,0 +1,11 @@
+ COPYRIGHT notification
+Author: René Haberland,
+  2007, 2008, 30.12.2018, Saint Petersburg, Russia
+
+All software is licensed under Creative Commons 4.0 Share Alike (CC BY-SA 4.0), for more details refer to https://creativecommons.org/licenses/by-sa/4.0/legalcode.
+
+
+3RD PARTY SOFTWARE USING:
+ - Haskell (Glasgow Haskell Compiler, GHC/GHCI)
+ - Haskell libraries: HXT, others)
+ - regular expression tutorial (Haskell code adaptation, originally from Simon P. Jones, Kent University, UK)

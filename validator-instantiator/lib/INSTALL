@@ -1,0 +1,41 @@
+the following is an installation guide under Windows7
+
+
+ install VisualHaskell7.1 or install GHC with Haddock
+   in order to install Visual Haskell, make sure you have got a Visual Studio environment with latest Windows+VS service packs installed, run VSHaskell71.msi. VisualStudio2003.Net is known to work.
+ 
+ make sure after installation there is no clashing Haskell path environment (ghc and other Haskell path environement variables are known to conflict with each other!)
+   for GHC make sure the binary directory is in path, e.g. export PATH=C:\ghc\ghc-6.4.2\bin:$PATH
+
+ make sure Haddock is in path, e.g. C:\Program Files\haddock-0.8
+
+ system restart is required
+
+ check GHC, Haddock both are in path from a console
+
+
+
+ Install the Haskell http-module:
+
+   1. Unpack the sources and enter the source directory. E.g.:
+      $ tar -zxf http-VERSION.tar.gz
+      $ cd http-VERSION
+   2. Install the HTTP package:
+         1. Configure:
+            $ runhaskell Setup.lhs configure
+         2. Compile:
+            $ runhaskell Setup.lhs build
+         3. Install (as root):
+            # runhaskell Setup.lhs install
+
+ Install the Haskell HXT-module:
+    install HXT 7.1 from 2nd February 2007 (later versions untested, but should also work):
+  1. make setup
+  2. setup configure --ghc
+  3. setup build
+  4. setup install		(# run as superuser)
+  
+ Build, link and test built HXT-libraries:
+	cd examples
+	make all
+	make test
